@@ -23,10 +23,10 @@ body {
     border-radius: 1em;
 }
 
-h2 {
-    text-align: center;
-    color: white;
-    margin-top: 20px;
+.input-container {
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    gap: 1em;
 }
 
 .input {
@@ -50,14 +50,11 @@ button {
     padding: 1em;
 }
 
-.container-character-image {
-    background-color: #ffffff;
-    padding: 0.5em;
-    height: 9.37em;
-    width: 9.37em;
-    display: block;
-    margin: auto;
-    border-radius: 50%;
+.container-character-image img {
+   width: 100%;
+   position: relative;
+   width: block;
+   border-radius: 50%;
 }
 
 .character-name {
