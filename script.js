@@ -27,8 +27,10 @@ input.addEventListener("keyup", async () => {
         return false;
     }
 
-    const url = `https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=${apiKey}&
+    const url = `https://gateway.marvel.com:443/v1/public/characters
+    ?ts=${timestamp}&apikey=${apiKey}&
     hash=${hashValue}&nameStartswith=${input.value}`;
+
 
     const response = await fetch(url);
 
@@ -37,7 +39,7 @@ input.addEventListener("keyup", async () => {
     jsonData.data["results"].forEach((result) => {
         let name = result.name;
         let div = document.createElement("div");
-        div.style.cursor = "ponter";
+        div.style.cursor = "pointer";
         div.classList.add("autocomplete-items");
         div.setAttribute("onclick","displayWords('" + name +"')");
         let word = "<b>" + name.substr(0, input.value.length) + "</b>";
@@ -52,15 +54,17 @@ button.addEventListener("click", (getRsult = async () => {
         alert("Input cannot be blank");
     }
     showContainer.innerHTML = "";
-    const url = `https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=${apiKey}&
-    hash=${hashValue}&name=${input.value}`;
+    
+    const url = `https://gateway.marvel.com:443/v1/public/characters?ts=${timestamp}&apikey=${apiKey}&hash=${hashValue}&name=${input.value}`;
+    console.log (url);
+
 
     const response = await fetch(url);
 
     const jsonData = await response.json();
 
     jsonData.data["results"].forEach((element) => {
-        showContainer.innerHTML = `div class="card-container">
+        showContainer.innerHTML = `<div class="card-container">
         <div class="container-character-image">
         <img src="${element.thumbnail["path"] + "." + element.
         thumbnail["extension"]
@@ -74,5 +78,5 @@ button.addEventListener("click", (getRsult = async () => {
  })
 );
 window.onload = () => {
-    getRsult()
+    getRsult();
 };
